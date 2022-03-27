@@ -10,6 +10,19 @@ include('./includes/header.php');
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
+            <?php
+            if(isset($_GET['psdmg'])){
+                $passwordUpdateSucess =  "<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Nouveau mot de passe enregistré.</div>";
+                echo $passwordUpdateSucess;  
+            }
+
+            if(isset($_GET['msg'])){
+                $editCashierSucess =  "<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Mise à jour bien effectué.</div>";
+                echo $editCashierSucess;  
+            }
+            ?>
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -53,14 +66,17 @@ include('./includes/header.php');
                                                 <th>Téléphone</th>
                                                 <th>Genre</th>
                                                 <th>Adresse</th>
-                                                <th>Id </th>
+                                               
                                                 <th>Email</th>
                                                 <th>Date enregistrement</th>
+                                                <th>MAJ Détails</th>
+                                                <th>MAJ MDP</th>
+                                               
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $selectCustomers = "SELECT * from customer ORDER BY registerDate desc";
+                                            $selectCustomers = "SELECT * from cashier WHERE cashierRole = 'client' ORDER BY dateRegistred desc";
                                             $queryCustomers = mysqli_query($connection, $selectCustomers) or die("Il y a une erreure" .mysqli_error($connection));
                                             
                                             while($row = mysqli_fetch_array($queryCustomers)){
@@ -68,12 +84,17 @@ include('./includes/header.php');
                                             <tr>
                                                 <td><?php echo $row['firstname'] ?></td>
                                                 <td><?php echo $row['lastname'] ?></td>
-                                                <td><?php echo $row['phoneNumber'] ?></td>
+                                                <td><?php echo $row['phonenumber'] ?></td>
                                                 <td><?php echo $row['gender'] ?></td>
                                                 <td><?php echo $row['adresse'] ?></td>
-                                                <td><?php echo $row['idNumber'] ?></td>
+                                                
                                                 <td><?php echo $row['email'] ?></td>
-                                                <td><?php echo $row['registerDate'] ?></td>
+                                                <td><?php echo $row['dateRegistred'] ?></td>
+                                                <td><a href="updateCustomerDetails.php?id=<?php echo $row['id']; ?>"
+                                                            class="btn btn-warning">MAJ Détails</a></td>
+                                                    <td><a href="updateCashierPassword.php?id=<?php echo $row['id']; ?>"
+                                                            class="btn btn-warning">MAJ MDP</a>
+                                                    </td>
                                             </tr>
                                            <?php }
                                            ?>

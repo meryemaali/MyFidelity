@@ -19,7 +19,7 @@ include('./includes/header.php');
 
             if(isset($_GET['msg'])){
                 $editCashierSucess =  "<div class='alert alert-success'>
-                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Mis à jour bien effectué.</div>";
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Mise à jour bien effectué.</div>";
                 echo $editCashierSucess;  
             }
             ?>
@@ -77,7 +77,7 @@ include('./includes/header.php');
                                             <tbody>
                                                 <?php
 
-                                                $selectCashiers = "SELECT * from cashier ORDER BY dateRegistred desc";
+                                                $selectCashiers = "SELECT * from cashier WHERE cashierRole = 'administrateur' OR cashierRole ='caissier' ORDER BY dateRegistred desc";
                                                 $cashiersQuery = mysqli_query($connection, $selectCashiers) or die("Il y a une erreure" .mysqli_error($connection));
                                                 while($row = mysqli_fetch_array($cashiersQuery)){
 

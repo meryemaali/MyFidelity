@@ -8,6 +8,8 @@ $error = false;
 
 if(isset($_POST['updateLimit'])){
     $rewardLimit = cleanForm($_POST['updateRewardLimit']);
+    $updateGift = cleanForm($_POST['updateGift']);
+
 
     if( empty($rewardLimit) ){
         $error = true;
@@ -19,10 +21,16 @@ if(isset($_POST['updateLimit'])){
         <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne doit contenir que des lettres.</div>";
     }
 
+    if( empty($updateGift) ){
+        $error = true;
+        $giftError = "<div class='alert alert-danger'>
+        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne peut pas être vide.</div>";
+} 
+
     
     if(!$error){
 
-        $sql = "UPDATE rewardlimit SET reward_limit = '$rewardLimit', dateUpdated=Now() WHERE id='$id' "; 
+        $sql = "UPDATE rewardlimit SET reward_limit = '$rewardLimit', gift = '$updateGift', dateUpdated=Now() WHERE id='$id' "; 
         
         $result = mysqli_query($connection, $sql ) or die("Il y a une erreur".mysqli_error($connection));
        
@@ -84,6 +92,7 @@ if(isset($_POST['updateLimit'])){
                                 $row = mysqli_fetch_array($query);
 
                                 $reward_limit = $row['reward_limit'];
+                                $gift = $row['gift'];
                                 ?>
                                     <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>"
                                     method = "POST">
@@ -102,6 +111,22 @@ if(isset($_POST['updateLimit'])){
                                             ?>
                                             <span id="errorUpdateRewardLimit"></span>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="updateReward">Modifier le cadeau</label>
+                                            <input type="text" 
+                                            class="form-control" 
+                                            value="<?php echo $gift; ?>"
+                                            name="updateGift"
+                                            id="updateGift" 
+                                            placeholder="Modifier le cadeau">
+                                            <?php
+                                            if(isset($giftError)){
+                                                echo $gifttError;
+                                            }
+                                            ?>
+                                            <span id="errorUpdateGift"></span>
+                                        </div>
+                                        
                                         <button type="submit" 
                                         name="updateLimit"
                                         id="updateLimit"

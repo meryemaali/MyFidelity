@@ -7,14 +7,13 @@ $id = $_GET['id'];
 $error = false;
 
 
-if(isset($_POST['updateCashierDetails'])){
+if(isset($_POST['updateCustomerDetails'])){
     $firstname = cleanForm($_POST['firstname']);
     $lastname = cleanForm($_POST['lastname']);
     $gender = cleanForm($_POST['gender']);
     $phonenumber = cleanForm($_POST['phonenumber']);
     $adresse = cleanForm($_POST['adresse']);
     $email = cleanForm($_POST['email']);
-    $cashierRole = cleanForm($_POST['cashierRole']);
 
     //validation form
     if( empty($firstname) ){
@@ -70,21 +69,17 @@ if(isset($_POST['updateCashierDetails'])){
 			<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne peut pas être vide.</div>";
 	} 
 
-    if( empty($cashierRole) ){
-        $error = true;
-        $cashierRoleError = "<div class='alert alert-danger'>
-        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne peut pas être vide.</div>";
-    } 
+   
 
     if(!$error){
-        $sqlCashier = "UPDATE cashier SET firstname='$firstname',
+        $sqlCustomer = "UPDATE cashier SET firstname='$firstname',
         lastname='$lastname', gender='$gender', phonenumber='$phonenumber',
-        adresse='$adresse', email='$email', cashierRole='$cashierRole'
+        adresse='$adresse', email='$email'
         WHERE id='$id' ";
 
-        $resultCashier = mysqli_query($connection, $sqlCashier) or die("Il ya une erreure" .mysqli_error($connection));
-        if($resultCashier == 1){
-            header('Location: allCashiers.php?msg');
+        $resultCustomer = mysqli_query($connection, $sqlCustomer) or die("Il ya une erreure" .mysqli_error($connection));
+        if($resultCustomer == 1){
+            header('Location: customers.php?msg');
         }
     }
 
@@ -130,13 +125,13 @@ if(isset($_POST['updateCashierDetails'])){
 
                             <!-- /.card -->
                             <div class="card">
-                                <div class="card-header">Entrer détails caissier</div>
+                                <div class="card-header">Entrer vos informations</div>
                                 <div class="card-body">
 
                                 <?php
                                 
 
-                                $result = "SELECT *from cashier WHERE id = '$id'";
+                                $result = "SELECT * from cashier WHERE id = '$id'";
                                 $query = mysqli_query($connection, $result) or die("Il ya une erreure" .mysqli_error($connection));
                                 $row = mysqli_fetch_array($query);
 
@@ -146,7 +141,6 @@ if(isset($_POST['updateCashierDetails'])){
                                 $phonenumber = $row['phonenumber'];
                                 $adresse = $row['adresse'];
                                 $email = $row['email'];
-                                $cashierRole = $row['cashierRole'];
 
 
                                 ?>
@@ -286,39 +280,13 @@ if(isset($_POST['updateCashierDetails'])){
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="cashierRole">Rôle</label>
-                                                    <select class="custom-select form-control-border"
-                                                        name="cashierRole"
-                                                        id="cashierRole">
-                                                        <option value="">Choisir rôle</option>
-                                                        <option value="caissier"
-                                                        <?php
-                                                         if($cashierRole == 'caissier'){
-                                                            echo 'selected';
-                                                        } ?>
-                                                        >Caissier</option>
-                                                        <option value="administrateur"
-                                                        <?php
-                                                         if($cashierRole == 'administrateur'){
-                                                            echo 'selected';
-                                                        } ?>
-                                                        >Administrateur</option>
-                                                    </select>
-                                                    <span id="errorCashierRole"></span>
-                                                    <?php 
-
-                                                    if(isset($cashierRoleError)){
-                                                        echo $cashierRoleError;
-                                                    }
-                                                    ?>
-                                                </div>
+                                                
                                             </div>
                                         </div>
 
                                         <button type="submit"
-                                            name="updateCashierDetails"
-                                            id="updateCashierDetails"
+                                            name="updateCustomerDetails"
+                                            id="updateCustomerDetails"
                                             class="btn btn-outline-primary btn-lg w-100 text-uppercase">
                                             Enregistrer
                                             </button>

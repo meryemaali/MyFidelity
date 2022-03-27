@@ -1,18 +1,18 @@
 <?php
-include('./includes/header.php');
-include('../shared/sanitize.php');
+include('./shared/header.php');
+include('./shared/sanitize.php');
 
 $error = false;
 
 //vérifier et voir si le bouton Soumettre est cliquable
-if (isset($_POST['addCashier']) ) {
+if (isset($_POST['addCustomerr']) ) {
     $firstname = cleanForm($_POST['firstname']);
     $lastname = cleanForm($_POST['lastname']);
     $gender = cleanForm($_POST['gender']);
     $phonenumber = cleanForm($_POST['phonenumber']);
 	$adresse = cleanForm($_POST['adresse']);
     $email = cleanForm($_POST['email']);
-    $cashierRole = cleanForm($_POST['cashierRole']);
+    $idNumber = cleanForm($_POST['idNumber']);
     $password = cleanForm($_POST['password']);
 
     
@@ -53,11 +53,15 @@ if (isset($_POST['addCashier']) ) {
         <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne doit contenir que des chiffres.</div>";
     }
 
-    if( empty($cashierRole) ){
+    if( empty($idNumber) ){
         $error = true;
-        $cashierRoleError = "<div class='alert alert-danger'>
+        $idNumberError = "<div class='alert alert-danger'>
         <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne peut pas être vide.</div>";
-    } 
+    } else if( !preg_match("/^[0-9]*$/", $idNumber)){
+        $error = true;
+        $idNumberError = "<div class='alert alert-danger'>
+        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne doit contenir que des chiffres.</div>";
+    }
 
     if( empty($password) ){
         $error = true;
@@ -103,12 +107,14 @@ if (isset($_POST['addCashier']) ) {
 
     if(!$error){
 
-			$sql = "insert into cashier(firstname, lastname, gender, phonenumber, adresse, email, cashierRole, password, dateRegistred) values('$firstname', '$lastname', '$gender', '$phonenumber', '$adresse', '$email', '$cashierRole', '$password', Now() )";
+			$sql = "insert into customer(phonenumber, firstname, lastname, gender, adresse, idNumber, email, password, registerDate) values('$phonenumber', '$firstname', '$lastname', '$gender', '$adresse', '$idNumber', '$email', '$password', Now())";
+			$sql1 = "insert into cashier(firstname, lastname, gender, phonenumber, adresse, email, cashierRole, password, dateRegistred) values('$firstname', '$lastname', '$gender', '$phonenumber', '$adresse', '$email', 'client', '$password', Now() )";
 			
-			$result = mysqli_query($connection, $sql ) or die("L'insertion des données a échouée".mysqli_error($connection));
-			if ($result == 1) {
+            $result = mysqli_query($connection, $sql ) or die("L'insertion des données a échouée".mysqli_error($connection));
+            $result1 = mysqli_query($connection, $sql1 ) or die("L'insertion des données a échouée".mysqli_error($connection));
+			if ($result == 1 && $result1 == 1 ) {
 				$addManagerSucess = "<div class='alert alert-success'>
-				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Un caissier a été ajouté avec succès.</div>";
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Un client a été ajouté avec succès.</div>";
 			}
 		}
 	}
@@ -117,9 +123,14 @@ if (isset($_POST['addCashier']) ) {
 ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+<div style="text-align:center">
+<p class="h1"><b>MyFidelity </b>App</p>
+</div>
+<div class="card card-outline card-primary">
     <div class="wrapper">
         <!-- Main Sidebar Container -->
-        <?php include('includes/aside.php'); ?>
+        <div class="card-body">
+
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -128,7 +139,7 @@ if (isset($_POST['addCashier']) ) {
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="text-uppercase m-2">Ajouter caissier</h1>
+                            <h1 class="text-uppercase m-2">S'inscrire</h1>
                         </div>
                         <!-- /.col -->
                         <!-- /.col -->
@@ -213,8 +224,8 @@ if (isset($_POST['addCashier']) ) {
                                                     <select class="custom-select form-control-border" name="gender"
                                                         id="gender">
                                                         <option value="">Choisir un genre</option>
-                                                        <option value="Homme">Homme</option>
-                                                        <option value="Femme">Femme</option>
+                                                        <option value="male">Homme</option>
+                                                        <option value="female">Femme</option>
                                                     </select>
 													<span id="errorGender"></span>
                                                     <?php
@@ -297,20 +308,18 @@ if (isset($_POST['addCashier']) ) {
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="cashierRole">Rôle</label>
-                                                    <select class="custom-select form-control-border" name="cashierRole"
-                                                        id="cashierRole">
-                                                        <option value="">Choisir un rôle</option>
-                                                        <option value="caissier">caissier</option>
-														<option value="administrateur">Administrateur</option>
-                                                    </select>
-													<span id="errorCashierRole"></span>
-                                                    <?php
-                                                    if( isset($cashierRoleError)){
-                                                       echo $cashierRoleError;
-                                                    }
-                                                    ?>
+                                            <div class="form-group">
+                                                    <label for="idNumber">Nombre Id</label>
+                                                    <input type="idNumber"
+                                                        class="form-control" name="idNumber"
+                                                        id="idNumber"
+                                                        placeholder="22544">
+														<span id="errorIdNumber"></span>
+                                                        <?php
+                                                        if( isset($idNumberError)){
+                                                           echo $idNumberError;
+                                                        }
+                                                        ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -328,10 +337,10 @@ if (isset($_POST['addCashier']) ) {
                                                 ?>
                                         </div>
                                         <button type="submit"
-                                            name="addCashier"
-											id="addCashier"
-                                            class="btn btn-outline-primary btn-lg w-100 text-uppercase">Ajouter Caissier
-                                            </button>
+                                            name="addCustomerr"
+											id="addCustomerr"
+                                            class="btn btn-outline-primary btn-lg w-100 text-uppercase">S'inscrire                                            </button>
+                                            <div class="text-center">Vous avez déjà un compte ? <a href="index.php">Se connecter</a></div>
                                     </form>
                                 </div>
                             </div>
@@ -350,7 +359,9 @@ if (isset($_POST['addCashier']) ) {
             </section>
             <!-- /.content -->
         </div>
+        </div>
+        </div>
         <!-- /.content-wrapper -->
         <?php
-        include('./includes/footer.php');
+        include('./shared/footer.php');
         ?>

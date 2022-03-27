@@ -76,6 +76,82 @@ $(document).ready( function(){
 
     });
 
+    //vérifier validation ajout client
+    $("#addCustomerr").click( function(){
+        //e.preventDefault();
+        //console.log("côté client fonctionne bien");
+
+        var firstname = $("#firstname").val();
+        var lastname = $("#lastname").val();
+        var gender = $("#gender").val();
+        var phonenumber = $("#phonenumber").val();
+        var adresse = $("#adresse").val();
+        var email = $("#email").val();
+        var idNumber = $("#idNumber").val();
+        var password = $("#password").val();
+
+        var valid = true;
+
+        if( firstname == "" || !isNameValid(firstname)){
+            valid = false;
+            $("#errorFirstname").html("Veuillez remplir ce champ (que les lettres qui sont autotisées)");
+        } else {
+            $("#errorFirstname").html();
+        }
+
+        
+        if( lastname == "" || !isNameValid(lastname)){
+            valid = false;
+            $("#errorLastname").html("Veuillez remplir ce champ (que les lettres qui sont autotisées)");
+        } else {
+            $("#errorLastname").html();
+        }
+
+        if( gender == ""){
+            valid = false;
+            $("#errorGender").html("Veuillez sélectionner un genre");
+        } else {
+            $("#errorGender").html();
+        }
+
+       
+        if( phonenumber == "" || !isNumberValid(phonenumber)){
+            valid = false;
+            $("#errorPhonenumber").html("Veuillez insérer un numéro de téléphone");
+        } else {
+            $("#errorPhonenumber").html();
+        }
+
+        if( email == "" || !isEmail(email)){
+            valid = false;
+            $("#errorEmail").html("Veuillez insérer une adresse email valide");
+        } else {
+            $("#errorEmail").html();
+        }
+
+        if( adresse == "" ){
+            valid = false;
+            $("#errorAdresse").html("Veuillez insérer une adresse");
+        } else {
+            $("#errorAdresse").html();
+        }
+
+        if( idNumber == "" || !isNumberValid(idNumber)){
+            valid = false;
+            $("#errorIdNumber").html("Veuillez insérer un identifiant");
+        } else {
+            $("#errorIdNumber").html();
+        }
+
+        if( password == "" || !passwordValidate(password)){
+            valid = false;
+            $("#errorPassword").html("Mot de passe doit contenir entre 6 et 15 caractères dont une lettre majuscule, une lettre minuscule et un chiffre");
+        } else {
+            $("#errorPassword").html();
+        }
+
+    });
+
     //vérifier login form validation
     $("#login").click(function(e){
     //    e.preventDefault();
@@ -188,12 +264,76 @@ $(document).ready( function(){
 
     });
 
+
+    //MAJ détails clients
+
+    $("#updateCustomerDetails").click( function(){
+        // e.preventDefault();
+        // console.log("Très bien !");
+
+        var firstname = $("#firstname").val();
+        var lastname = $("#lastname").val();
+        var gender = $("#gender").val();
+        var phonenumber = $("#phonenumber").val();
+        var adresse = $("#adresse").val();
+        var email = $("#email").val();
+
+        var valid = true;
+
+        if( firstname == "" || !isNameValid(firstname)){
+            valid = false;
+            $("#errorFirstname").html("Veuillez remplir ce champ (que les lettres qui sont autotisées)");
+        } else {
+            $("#errorFirstname").html();
+        }
+
+        
+        if( lastname == "" || !isNameValid(lastname)){
+            valid = false;
+            $("#errorLastname").html("Veuillez remplir ce champ (que les lettres qui sont autotisées)");
+        } else {
+            $("#errorLastname").html();
+        }
+
+        if( gender == ""){
+            valid = false;
+            $("#errorGender").html("Veuillez sélectionner un genre");
+        } else {
+            $("#errorGender").html();
+        }
+
+       
+        if( phonenumber == "" || !isNumberValid(phonenumber)){
+            valid = false;
+            $("#errorPhonenumber").html("Veuillez insérer un numéro de téléphone");
+        } else {
+            $("#errorPhonenumber").html();
+        }
+
+        if( email == "" || !isEmail(email)){
+            valid = false;
+            $("#errorEmail").html("Veuillez insérer une adresse email valide");
+        } else {
+            $("#errorEmail").html();
+        }
+
+        if( adresse == "" ){
+            valid = false;
+            $("#errorAdresse").html("Veuillez insérer une adresse");
+        } else {
+            $("#errorAdresse").html();
+        }
+
+
+    });
+
     //MAJ taux de récompense
     $("#updateLimit").click( function(){
          //e.preventDefault();
          //console.log("ça marche bien !");
 
         var rewardLimit = $("#updateRewardLimit").val();
+        var updateGift = $("#updateGift").val();
        
 
         var valid = true;
@@ -201,6 +341,12 @@ $(document).ready( function(){
         if( rewardLimit == "" || !isNumberValid(rewardLimit)){
             valid = false;
             $("#errorUpdateRewardLimit").html("Veuillez insérer un numéro une valeur");
+        } else {
+            $("#errorUpdateRewardLimit").html();
+        }  
+        if( updateGift == ""){
+            valid = false;
+            $("#errorUpdateRewardLimit").html("Veuillez insérer un cadeau");
         } else {
             $("#errorUpdateRewardLimit").html();
         }      

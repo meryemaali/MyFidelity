@@ -14,7 +14,7 @@ include('./includes/header.php');
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="text-uppercase m-2">Points de fidélité</h1>
+                            <h1 class="text-uppercase m-2">Modifier mot de passe</h1>
                         </div>
                         <!-- /.col -->
                         <!-- /.col -->
@@ -36,12 +36,15 @@ include('./includes/header.php');
                         <section class="col-lg-12">
                             <!-- Custom tabs (Charts with tabs)-->
 
-                            <?php
+                            <!-- /.card -->
+
+                            <?php 
+
+                            include('../shared/_updatePassword.php');
+
+                            ?>
 
 
-                          include('../shared/_rewardPoints.php');
-                          ?>
-                          
                         </section>
                         <!-- /.Left col -->
                         <!-- right col (We are only adding the ID to make the widgets sortable)-->

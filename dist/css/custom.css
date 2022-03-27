@@ -10,7 +10,9 @@
 #errorcountryCode,
 #errorPassword,
 #errorUpdateRewardLimit,
-#errorTotalPurchase {
+#errorTotalPurchase,
+#errorIdNumber,
+#errorUpdateGift {
     color: #dc3545;
     text-transform: uppercase !important;
     font-weight: bold !important;

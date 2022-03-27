@@ -3,7 +3,7 @@
 include('../shared/config.php');
 include('../shared/security.php');
 
-if($_SESSION['cashierRole'] != 'manager'){
+if($_SESSION['cashierRole'] != 'administrateur'){
     header("Location: ../index.php");
 }
 
@@ -16,7 +16,7 @@ if($_SESSION['cashierRole'] != 'manager'){
     <meta charset="utf-8" />
     <meta name="viewport"
         content="width=device-width, initial-scale=1" />
-    <title>MyLoyalty | Dashboard</title>
+    <title>MyFidelity | Dashboard</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"

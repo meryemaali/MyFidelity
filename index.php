@@ -3,11 +3,14 @@ include('./shared/header.php');
 include('./shared/sanitize.php');
 
 if( isset($_SESSION['cashierId']) != "" && isset($_SESSION['cashierRole']) != ""){
-    if($_SESSION['cashierRole'] == 'manager'){
+    if($_SESSION['cashierRole'] == 'administrateur'){
         header("Location: ./manager/index.php");
-    } else if($_SESSION['cashierRole'] == 'cashier'){
+    } else if($_SESSION['cashierRole'] == 'caisser'){
         header("Location: ./cashier/index.php");
-    } else {
+    } else if($_SESSION['cashierRole'] == 'client'){
+        header("Location: ./customer/index.php");
+    } 
+    else {
         $errormsg = "<div class='alert alert-danger'>
         <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Non autorisé !</div>";
              
@@ -51,12 +54,14 @@ if( isset($_POST['login'])){
             $_SESSION['lastname'] = $row['lastname'];
             $_SESSION['cashierRole'] = $row['cashierRole'];
 
-            if($_SESSION['cashierRole']  == 'manager'){
+            if($_SESSION['cashierRole']  == 'administrateur'){
                 header("Location: ./manager/index.php");
-            } else if($_SESSION['cashierRole'] == 'cashier'){
+            } else if($_SESSION['cashierRole'] == 'caissier'){
                 header("Location: ./cashier/index.php");
+            } else if($_SESSION['cashierRole'] == 'client'){
+                header("Location: ./customer/index.php");
             } else {
-                $errormsg = 
+                
                 $errormsg = "<div class='alert alert-danger'>
                 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Non autorisé !</div>";
              }
@@ -80,7 +85,7 @@ if( isset($_POST['login'])){
                     echo $errormsg;
                 }
                 ?>
-                <p class="h1"><b>MyLoyalty </b>App</p>
+                <p class="h1"><b>MyFidelity </b>App</p>
             </div>
             <div class="card-body">
 
@@ -132,6 +137,7 @@ if( isset($_POST['login'])){
                             id="login"
                             class="btn btn-primary btn-block">Connexion
                         </button>
+                        <div class="text-center">Vous n'avez pas un compte ? <a href="register.php">Cliquez-ici</a></div>
                         </div>
                         <!-- /.col -->
                     </div>

@@ -3,7 +3,7 @@
 include('../shared/config.php');
 include('../shared/security.php');
 
-if($_SESSION['cashierRole'] != 'caissier'){
+if($_SESSION['cashierRole'] != 'client'){
     header("Location: ../index.php");
 }
 

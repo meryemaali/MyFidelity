@@ -86,12 +86,32 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="./customers.php"
+                    <a href="#"
                         class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>Clients</p>
+                        <i class="nav-icon fas fa-user-cog"></i>
+                        <p>
+                            Clients
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="./addCustomer.php"
+                                class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Ajouter client</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./customers.php"
+                                class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tous les clients</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
 
                 <li class="nav-item">
                     <a href="#"
