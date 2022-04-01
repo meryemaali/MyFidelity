@@ -138,6 +138,7 @@ if( isset($_POST['login'])){
                             class="btn btn-primary btn-block">Connexion
                         </button>
                         <div class="text-center">Vous n'avez pas un compte ? <a href="register.php">Cliquez-ici</a></div>
+                        <div class="text-center">Vous êtes client ? <a href="./customer/scanBadge.php">Scanner votre badge ici</a></div>
                         </div>
                         <!-- /.col -->
                     </div>

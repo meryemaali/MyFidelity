@@ -2,7 +2,7 @@
 include('./includes/header.php');
 include('../shared/sanitize.php');
 
-$id = $_GET['id'];
+$id = $_SESSION['cashierId'];
 
 $error = false;
 
@@ -29,7 +29,7 @@ if(isset($_POST['updatePassword'])){
 
         $result = mysqli_query($connection, $sql) or die("Il ya une erreure" .mysqli_error($connection));
         if($result == 1){
-            header('Location: customers.php?psdmg');
+            header('Location: customerDetails.php?psdmg');
         }
     }
 

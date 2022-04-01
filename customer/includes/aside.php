@@ -40,6 +40,7 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
+                        
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -68,6 +69,26 @@
                                         <p>Modifier mot de passe</p>
                                     </a>
                                 </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-cogs"></i>
+                                <p>
+                                    Historique
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./purchaseHistory.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Historique achats </p>
+                                    </a>
+                                </li>
+                                
+                                
                             </ul>
                         </li>
 

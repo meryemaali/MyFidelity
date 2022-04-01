@@ -23,7 +23,7 @@ if(isset($_POST['rewardPoints'])){
     $phonenumber = cleanForm($_POST['phonenumber']);
     $totalPurchase = cleanForm($_POST['totalPurchase']);
 
-    $selectPhone = "SELECT * FROM customer WHERE phonenumber='$phonenumber'";
+    $selectPhone = "SELECT * FROM cashier WHERE phonenumber='$phonenumber' AND cashierRole='client'";
     $phoneQuery = mysqli_query($connection, $selectPhone) or die("Il y a une erreur" .mysqli_error($connection));
     $checkPhone = mysqli_num_rows($phoneQuery);
 
@@ -62,7 +62,7 @@ if(isset($_POST['rewardPoints'])){
     $points = intval(floatval($totalPurchase) / floatval($rewardLimit));
 
     if(!$error){
-        $sql = "insert into points(phonenumber, casheerId, points, referenceNumber, dateTime) values('$phonenumber', '$cashierId', '$points', '$reference', Now() )";
+        $sql = "insert into points(phonenumber, casheerId, points, totalPurchase, referenceNumber, dateTime) values('$phonenumber', '$cashierId', '$points', '$totalPurchase', '$reference', Now() )";
 
         $pointsQuery = mysqli_query($connection, $sql) or die("Il y a une erreur" .mysqli_error($connection));
         if($pointsQuery == 1){

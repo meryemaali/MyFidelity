@@ -2,7 +2,7 @@
 include('./includes/header.php');
 include('../shared/sanitize.php');
 
-$id = $_GET['id'];
+$id = $_SESSION['cashierId'];
 
 $error = false;
 
@@ -79,7 +79,7 @@ if(isset($_POST['updateCustomerDetails'])){
 
         $resultCustomer = mysqli_query($connection, $sqlCustomer) or die("Il ya une erreure" .mysqli_error($connection));
         if($resultCustomer == 1){
-            header('Location: customers.php?msg');
+            header('Location: customerDetails.php?msg');
         }
     }
 

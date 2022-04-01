@@ -7,6 +7,19 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+        <?php
+            if(isset($_GET['psdmg'])){
+                $passwordUpdateSucess =  "<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Nouveau mot de passe enregistré.</div>";
+                echo $passwordUpdateSucess;  
+            }
+
+            if(isset($_GET['msg'])){
+                $editCashierSucess =  "<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Mise à jour bien effectué.</div>";
+                echo $editCashierSucess;  
+            }
+            ?>
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">

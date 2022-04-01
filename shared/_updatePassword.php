@@ -2,7 +2,7 @@
 
 include('sanitize.php');
 
-$id = $_GET['id'];
+$id = $_SESSION['cashierId'];
 
 $error = false;
 
