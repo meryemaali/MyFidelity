@@ -31,20 +31,9 @@ $phonenumber = $row1['phonenumber'];
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
-                        </div>
-                        <!-- /.col -->
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
-
-            <!-- Main content -->
+                <?php include('notify.php'); ?>
+                            <h1 class="m-4">    Dashboard</h1>
+                             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
@@ -88,8 +77,11 @@ $phonenumber = $row1['phonenumber'];
                     <div class="row">
 
                         <!-- Left col -->
+                        
                         <section class="col-lg-12 connectedSortable">
                             <!-- Custom tabs (Charts with tabs)-->
+                            <div class="col text-center" >
+                            <div class="card-body d-flex flex-column">
                             <a href="scanTicket.php">
                             <button type="submit"
                                             name="scanTicket"
@@ -97,21 +89,30 @@ $phonenumber = $row1['phonenumber'];
                                             class="btn btn-outline-primary btn-lg w-50 text-uppercase">
                                             Scanner un ticket
                                             </button>
-                                            <div class="card-footer">
-                                    <a href="notify.php">Mes notifications</a>
-                                </div>
+                                            
+                                    </div>
+                                    </div>
+                               
                             <!-- /.card -->
                         </section>
                         <!-- /.Left col -->
                         <!-- right col (We are only adding the ID to make the widgets sortable)-->
 
 
-
+                            
+                        </div>
+                        <!-- /.col -->
+                        <!-- /.col -->
                     </div>
-                    <!-- /.row (main row) -->
-
-
+                    <!-- /.row -->
                 </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+           
+
+                    
                 <!-- /.container-fluid -->
             </section>
             <!-- /.content -->

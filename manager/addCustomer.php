@@ -12,7 +12,7 @@ if (isset($_POST['addCustomerr']) ) {
     $phonenumber = cleanForm($_POST['phonenumber']);
 	$adresse = cleanForm($_POST['adresse']);
     $email = cleanForm($_POST['email']);
-    $idNumber = cleanForm($_POST['idNumber']);
+    //$idNumber = cleanForm($_POST['idNumber']);
     $password = cleanForm($_POST['password']);
 
     
@@ -53,15 +53,15 @@ if (isset($_POST['addCustomerr']) ) {
         <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne doit contenir que des chiffres.</div>";
     }
 
-    if( empty($idNumber) ){
-        $error = true;
-        $idNumberError = "<div class='alert alert-danger'>
-        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne peut pas être vide.</div>";
-    } else if( !preg_match("/^[0-9]*$/", $idNumber)){
-        $error = true;
-        $idNumberError = "<div class='alert alert-danger'>
-        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne doit contenir que des chiffres.</div>";
-    }
+    // if( empty($idNumber) ){
+    //     $error = true;
+    //     $idNumberError = "<div class='alert alert-danger'>
+    //     <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne peut pas être vide.</div>";
+    // } else if( !preg_match("/^[0-9]*$/", $idNumber)){
+    //     $error = true;
+    //     $idNumberError = "<div class='alert alert-danger'>
+    //     <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne doit contenir que des chiffres.</div>";
+    // }
 
     if( empty($password) ){
         $error = true;
@@ -107,7 +107,7 @@ if (isset($_POST['addCustomerr']) ) {
 
     if(!$error){
 
-			$sql = "insert into customer(phonenumber, firstname, lastname, gender, adresse, idNumber, email, password, registerDate) values('$phonenumber', '$firstname', '$lastname', '$gender', '$adresse', '$idNumber', '$email', '$password', Now())";
+			$sql = "insert into customer(phonenumber, firstname, lastname, gender, adresse, idNumber, email, password, registerDate) values('$phonenumber', '$firstname', '$lastname', '$gender', '$adresse', '0', '$email', '$password', Now())";
 			$sql1 = "insert into cashier(firstname, lastname, gender, phonenumber, adresse, email, cashierRole, password, dateRegistred) values('$firstname', '$lastname', '$gender', '$phonenumber', '$adresse', '$email', 'client', '$password', Now() )";
 			
             $result = mysqli_query($connection, $sql ) or die("L'insertion des données a échouée".mysqli_error($connection));
@@ -219,8 +219,8 @@ if (isset($_POST['addCustomerr']) ) {
                                                     <select class="custom-select form-control-border" name="gender"
                                                         id="gender">
                                                         <option value="">Choisir un genre</option>
-                                                        <option value="male">Homme</option>
-                                                        <option value="female">Femme</option>
+                                                        <option value="Homme">Homme</option>
+                                                        <option value="Femme">Femme</option>
                                                     </select>
 													<span id="errorGender"></span>
                                                     <?php
@@ -302,22 +302,11 @@ if (isset($_POST['addCustomerr']) ) {
                                                         ?>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                            <div class="form-group">
-                                                    <label for="idNumber">Nombre Id</label>
-                                                    <input type="idNumber"
-                                                        class="form-control" name="idNumber"
-                                                        id="idNumber"
-                                                        placeholder="22544">
-														<span id="errorIdNumber"></span>
-                                                        <?php
-                                                        if( isset($idNumberError)){
-                                                           echo $idNumberError;
-                                                        }
-                                                        ?>
-                                                </div>
-                                            </div>
+                                            
+                                            
+                                            
                                         </div>
+                                        <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="password">Mot de passe</label>
                                             <input type="password"
@@ -330,6 +319,7 @@ if (isset($_POST['addCustomerr']) ) {
                                                     echo $passwordError;
                                                 }
                                                 ?>
+                                        </div>
                                         </div>
                                         <button type="submit"
                                             name="addCustomerr"

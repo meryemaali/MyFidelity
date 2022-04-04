@@ -32,7 +32,8 @@
             <div class="col-md-6">
             <div class="camera">
             <label>Scannez votre ticket</label>
-                <video id="preview" width="100%"></video>           
+                <video id="preview" width="100%"></video>  
+                <div class="text-center">Page d'accueil <a href="index.php">Revenir</a></div>         
                     </div>
                     </div>
                 <div class="col-md-6">

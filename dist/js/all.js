@@ -87,7 +87,7 @@ $(document).ready( function(){
         var phonenumber = $("#phonenumber").val();
         var adresse = $("#adresse").val();
         var email = $("#email").val();
-        var idNumber = $("#idNumber").val();
+       //var idNumber = $("#idNumber").val();
         var password = $("#password").val();
 
         var valid = true;
@@ -136,12 +136,12 @@ $(document).ready( function(){
             $("#errorAdresse").html();
         }
 
-        if( idNumber == "" || !isNumberValid(idNumber)){
-            valid = false;
-            $("#errorIdNumber").html("Veuillez insérer un identifiant");
-        } else {
-            $("#errorIdNumber").html();
-        }
+        // if( idNumber == "" || !isNumberValid(idNumber)){
+        //     valid = false;
+        //     $("#errorIdNumber").html("Veuillez insérer un identifiant");
+        // } else {
+        //     $("#errorIdNumber").html();
+        // }
 
         if( password == "" || !passwordValidate(password)){
             valid = false;
