@@ -12,7 +12,9 @@
 #errorUpdateRewardLimit,
 #errorTotalPurchase,
 #errorIdNumber,
-#errorUpdateGift {
+#errorUpdateGift,
+#errorCadeau,
+#errorActif {
     color: #dc3545;
     text-transform: uppercase !important;
     font-weight: bold !important;

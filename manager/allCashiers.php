@@ -57,7 +57,6 @@ include('./includes/header.php');
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <div class="table-responsive">
                                         <table id="allCashiers"
                                             class="table m-0">
                                             <thead class="text-uppercase">
@@ -68,10 +67,11 @@ include('./includes/header.php');
                                                     <th>Téléphone</th>
                                                     <th>Adresse</th>
                                                     <th>Email</th>
-                                                    <th>Rôle utilisateur</th>
+                                                    <th>Rôle</th>
                                                     <th>Date </th>
                                                     <th>MAJ Détails</th>
                                                     <th>MAJ MDP</th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -109,7 +109,7 @@ include('./includes/header.php');
                                             </tbody>
 
                                         </table>
-                                    </div>
+                                    
                                 </div>
                                 <!-- /.card-body -->
                             </div>

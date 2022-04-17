@@ -77,7 +77,7 @@ $result1 = "SELECT *from cashier WHERE id = '$id'";
 $query1 = mysqli_query($connection, $result1) or die("Il ya une erreure" .mysqli_error($connection));
 $row1 = mysqli_fetch_array($query1);
 $phonenumber = $row1['phonenumber'];
-                                            $selectCustomers = "SELECT * from points WHERE phonenumber = '$phonenumber' ORDER BY dateTime desc";
+                                            $selectCustomers = "SELECT * from points WHERE phonenumber = '$phonenumber' and totalPurchase != '0' ORDER BY dateTime desc";
                                             $queryCustomers = mysqli_query($connection, $selectCustomers) or die("Il y a une erreure" .mysqli_error($connection));
                                             
                                             while($row = mysqli_fetch_array($queryCustomers)){

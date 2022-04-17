@@ -153,7 +153,7 @@ $(document).ready( function(){
     });
 
     //vérifier login form validation
-    $("#login").click(function(e){
+    $("#login").click(function(){
     //    e.preventDefault();
     //     console.log("login fonctionne bien");
         var email = $("#email").val();
@@ -379,6 +379,39 @@ $(document).ready( function(){
     } 
 
    });
+
+   //validation etat cadeau
+   $('#updateClientCadeau').click(function(){
+    // e.preventDefault();
+    // console.log("updateCadeau fonctionne bien");
+    var totalPurchase = $('#updateCadeau').val();
+    var valid = true;
+
+    if(totalPurchase == "" ){
+        valid = false;
+        $('#errorCadeau').html("Veuillez insérer OUI ou NON.");
+    } else {
+        $('#errorCadeau').html();
+    }
+
+ });
+
+ //validation compte customer by admin
+ $('#validateAccountCustomer').click(function(){
+    // e.preventDefault();
+    // console.log("Validation fonctionne bien");
+    var actif = $('#validateAccount').val();
+    var valid = true;
+
+    if(actif == "" ){
+        valid = false;
+        $('#errorActif').html("Veuillez insérer 1 si le compte est valide sinon 2.");
+    } else {
+        $('#errorActif').html();
+    }
+
+ });
+
 
 
 });

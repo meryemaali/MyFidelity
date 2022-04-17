@@ -59,9 +59,9 @@ include('./includes/header.php');
                                     $row = mysqli_fetch_array($selectLimit);
                                     ?>
                                     <h2 class="text-center text-uppercase">
-                                    Le taux de récompense actuel en DHs 
+                                    Le taux de récompense actuel est 
                                         <strong><?php echo $row['reward_limit']; ?></strong> 
-                                        par achat total, mis à jour le <?php echo $row['dateUpdated'] ?> </h2>
+                                        points, mis à jour le <?php echo $row['dateUpdated'] ?> </h2>
                                     <a href="./updateRewardLimit.php?id=<?php echo $row['id']; ?>" 
                                     class="text-center text-uppercase btn btn-outline-primary btn-lg w-100 m-2">
                                     Modifier ce palier <i class="fas fa-arrow-right"></i> </a>

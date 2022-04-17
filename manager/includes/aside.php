@@ -13,7 +13,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <p class="brand-link">
-        <span class="brand-text font-weight-light">MyLoyalty Menu</span>
+        <span class="brand-text font-weight-light">MyFidelity Menu</span>
     </p>
 
     <!-- Sidebar -->
@@ -100,6 +100,13 @@
                                 class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Ajouter client</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./ValidateCustomers.php"
+                                class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Valider les nouveaux clients</p>
                             </a>
                         </li>
                         <li class="nav-item">

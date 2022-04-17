@@ -3,7 +3,7 @@ include('./includes/header.php');
 
 $id = $_SESSION['cashierId'];
 
-$result1 = "SELECT *from cashier WHERE id = '$id'";
+$result1 = "SELECT * from cashier WHERE id = '$id'";
 $query1 = mysqli_query($connection, $result1) or die("Il ya une erreure" .mysqli_error($connection));
 $row1 = mysqli_fetch_array($query1);
 $phonenumber = $row1['phonenumber'];
@@ -44,7 +44,7 @@ $phonenumber = $row1['phonenumber'];
                                 <div class="inner">
                                     <?php
 
-                                    $selectReward = "SELECT sum(points) as total FROM points WHERE phonenumber = '$phonenumber' ";
+                                    $selectReward = "SELECT sum(points) as total FROM points WHERE phonenumber = '$phonenumber' and totalPurchase != '0' ";
                                     $queryReward = mysqli_query($connection, $selectReward) or die("Il y a une erreur" .mysqli_error($connection));
                                     while($row = mysqli_fetch_assoc($queryReward)){
 

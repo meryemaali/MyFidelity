@@ -108,7 +108,7 @@ if (isset($_POST['addCustomerr']) ) {
     if(!$error){
 
 			$sql = "insert into customer(phonenumber, firstname, lastname, gender, adresse, idNumber, email, password, registerDate) values('$phonenumber', '$firstname', '$lastname', '$gender', '$adresse', '0', '$email', '$password', Now())";
-			$sql1 = "insert into cashier(firstname, lastname, gender, phonenumber, adresse, email, cashierRole, password, dateRegistred) values('$firstname', '$lastname', '$gender', '$phonenumber', '$adresse', '$email', 'client', '$password', Now() )";
+			$sql1 = "insert into cashier(firstname, lastname, gender, phonenumber, adresse, email, cashierRole, password, dateRegistred, actif) values('$firstname', '$lastname', '$gender', '$phonenumber', '$adresse', '$email', 'client', '$password', Now(), '1' )";
 			
             $result = mysqli_query($connection, $sql ) or die("L'insertion des données a échouée".mysqli_error($connection));
             $result1 = mysqli_query($connection, $sql1 ) or die("L'insertion des données a échouée".mysqli_error($connection));

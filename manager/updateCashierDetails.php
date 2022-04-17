@@ -136,7 +136,7 @@ if(isset($_POST['updateCashierDetails'])){
                                 <?php
                                 
 
-                                $result = "SELECT *from cashier WHERE id = '$id'";
+                                $result = "SELECT * from cashier WHERE id = '$id'";
                                 $query = mysqli_query($connection, $result) or die("Il ya une erreure" .mysqli_error($connection));
                                 $row = mysqli_fetch_array($query);
 

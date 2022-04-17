@@ -88,7 +88,7 @@ if(isset($_POST['rewardPoints'])){
                                             <?php
                                             
                                             ?>
-                                            <h4>Le taux de récompense d’aujourd’hui en DHs est <strong><?php echo $rewardLimit; ?></strong></h4>
+                                            <h4>Le taux de récompense d’aujourd’hui est <strong><?php echo $rewardLimit; ?> points</strong></h4>
                                         </div>
                                         <!-- /.card-body -->
                                     </div>

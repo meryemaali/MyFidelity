@@ -7,7 +7,7 @@ if( isset($_SESSION['cashierId']) != "" && isset($_SESSION['cashierRole']) != ""
         header("Location: ./manager/index.php");
     } else if($_SESSION['cashierRole'] == 'caisser'){
         header("Location: ./cashier/index.php");
-    } else if($_SESSION['cashierRole'] == 'client'){
+    } else if($_SESSION['cashierRole'] == 'client' && $_SESSION['actif'] == '1'){
         header("Location: ./customer/index.php");
     } 
     else {
@@ -53,12 +53,13 @@ if( isset($_POST['login'])){
             $_SESSION['firstname'] = $row['firstname'];
             $_SESSION['lastname'] = $row['lastname'];
             $_SESSION['cashierRole'] = $row['cashierRole'];
+            $_SESSION['actif'] = $row['actif'];
 
             if($_SESSION['cashierRole']  == 'administrateur'){
                 header("Location: ./manager/index.php");
             } else if($_SESSION['cashierRole'] == 'caissier'){
                 header("Location: ./cashier/index.php");
-            } else if($_SESSION['cashierRole'] == 'client'){
+            } else if($_SESSION['cashierRole'] == 'client' && $_SESSION['actif'] == '1'){
                 header("Location: ./customer/index.php");
             } else {
                 

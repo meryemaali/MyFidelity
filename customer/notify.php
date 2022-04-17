@@ -2,6 +2,11 @@
     include("functions.php");
 
     $id = $_SESSION['cashierId'];
+    $lastname = $_SESSION['lastname'];
+    $result1 = "SELECT * from cashier WHERE id = '$id'";
+$query1 = mysqli_query($connection, $result1) or die("Il ya une erreur" .mysqli_error($connection));
+$row1 = mysqli_fetch_array($query1);
+$phonenumber = $row1['phonenumber'];
 
 ?>
 <!doctype html>
@@ -36,6 +41,31 @@
             <a class="nav-link" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notifications 
                 
                 <?php
+                $sqlR = "SELECT * FROM rewardlimit";
+                $queryR = mysqli_query($connection, $sqlR) or die("Il y a une erreur" .mysqli_error($connection));
+                $row = mysqli_fetch_array($queryR);
+                
+                $rewardLimit = $row['reward_limit'];
+                $gift = $row['gift'];
+
+                $sqlP = "SELECT sum(points) as total FROM points WHERE phonenumber = '$phonenumber' ";
+                $queryP = mysqli_query($connection, $sqlP) or die("Il y a une erreur" .mysqli_error($connection));
+                $row = mysqli_fetch_assoc($queryP);
+                $points = $row['total'];            
+
+                if($points >= $rewardLimit){
+                  $sqlUpdate = "insert into notifications(id, name, type, message, status, giftStatus, date) values('$id', '$lastname', 'palier', 'Félicatations! Vous avez un cadeau. Rendez-vous dans votre magasin.', 'unread', 'non', Now() )";
+                  $updateQuery = mysqli_query($connection, $sqlUpdate) or die("Il y a une erreur" .mysqli_error($connection));
+                  $sqll = "insert into points(phonenumber, casheerId, points, totalPurchase, referenceNumber, dateTime) values('$phonenumber', '0', '-$rewardLimit', '0', '0', Now()) ";
+                  $result = mysqli_query($connection, $sqll) or die("Il ya une erreure" .mysqli_error($connection));
+                  if($updateQuery == 1 && $result == 1){
+                    $updateSucess =  "<div class='alert alert-success'>
+            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Réussi</div>"; 
+          
+        }
+                }
+              
+
                 $query = "SELECT * from notifications where status = 'unread' and id = '$id' order by date DESC";
                 if(count(fetchAll($query))>0){
                 ?>

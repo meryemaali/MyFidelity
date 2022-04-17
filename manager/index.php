@@ -35,7 +35,7 @@ include('./includes/header.php');
                                 <div class="inner">
                                     <?php
 
-                                    $selectReward = "SELECT sum(points) as total FROM points";
+                                    $selectReward = "SELECT sum(points) as total FROM points WHERE totalPurchase > '0'";
                                     $queryReward = mysqli_query($connection, $selectReward) or die("Il y a une erreur" .mysqli_error($connection));
                                     while($row = mysqli_fetch_assoc($queryReward)){
 
