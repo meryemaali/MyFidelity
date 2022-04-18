@@ -114,7 +114,7 @@ if (isset($_POST['addCustomerr']) ) {
             $result1 = mysqli_query($connection, $sql1 ) or die("L'insertion des données a échouée".mysqli_error($connection));
 			if ($result == 1 && $result1 == 1 ) {
 				$addManagerSucess = "<div class='alert alert-success'>
-				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Un client a été ajouté avec succès.</div>";
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Vos informations ont bien été enregistrées. Un mail vous sera envoyé lorsque votre compte sera validé.</div>";
 			}
 		}
 	}
