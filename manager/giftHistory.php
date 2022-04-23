@@ -29,7 +29,7 @@ include('./includes/header.php');
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="text-uppercase m-2">Les nouveaux clients</h1>
+                            <h1 class="text-uppercase m-2">Historique cadeaux</h1>
                         </div>
                         <!-- /.col -->
                         <!-- /.col -->
@@ -55,7 +55,7 @@ include('./includes/header.php');
                             <!-- Custom tabs (Charts with tabs)-->
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Les clients inscrits</h3>
+                                    <h3 class="card-title">Les cadeaux des clients</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -63,40 +63,33 @@ include('./includes/header.php');
                                         class="table m-0">
                                         <thead class="text-uppercase">
                                             <tr>
-                                                <th>Nom</th>
-                                                <th>Prénom</th>
                                                 <th>Téléphone</th>
-                                                <th>Genre</th>
-                                                <th>Adresse</th>
-                                               
-                                                <th>Email</th>
-                                                <th>Date enregistrement</th>
-                                                <th>Valider</th>
-                                                
+                                                <th>Cadeau</th>
+                                                <th>Etat cadeau</th>
+                                                <th>Date</th>
                                                
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $selectCustomers = "SELECT * from cashier WHERE cashierRole = 'client' and actif = '0' ORDER BY dateRegistred desc";
+                                            $sqll = "SELECT * from rewardLimit ";
+                                            $queryy = mysqli_query($connection, $sqll) or die("Il y a une erreure" .mysqli_error($connevtion));
+             
+                                             $roww = mysqli_fetch_array($queryy);
+             
+                                            
+                                             
+                                            $selectCustomers = "SELECT * FROM cadeau";
                                             $queryCustomers = mysqli_query($connection, $selectCustomers) or die("Il y a une erreur" .mysqli_error($connection));
                                             
                                             while($row = mysqli_fetch_array($queryCustomers)){
                                             ?>
                                             <tr>
-                                                <td><?php echo $row['firstname'] ?></td>
-                                                <td><?php echo $row['lastname'] ?></td>
                                                 <td><?php echo $row['phonenumber'] ?></td>
-                                                <td><?php echo $row['gender'] ?></td>
-                                                <td><?php echo $row['adresse'] ?></td>
-                                                
-                                                <td><?php echo $row['email'] ?></td>
-                                                <td><?php echo $row['dateRegistred'] ?></td>
-                                               
-                                                    <td><a href="validateAccountCustomer.php?id=<?php echo $row['id']; ?>"
-                                                            class="btn btn-warning">Valider</a>
-                                                    </td>
-                                                    
+                                                <td><?php echo $roww['gift'] ?></td>
+                                                <td><?php echo $row['etat'] ?></td>
+                                                <td><?php echo $row['date'] ?></td>
+                       
                                             </tr>
                                            <?php }
                                            ?>

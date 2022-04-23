@@ -121,6 +121,18 @@ if (isset($_POST['addCustomerr']) ) {
 
 
 ?>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="./dist/css/style.css"/>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+</head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
 <div style="text-align:center">
@@ -318,6 +330,7 @@ if (isset($_POST['addCustomerr']) ) {
                                                 class="form-control" name="password"
                                                 id="password"
                                                 placeholder="Mot de passe">
+                                                <ii id="eye" class="far fa-eye-slash"></ii>
 												<span id="errorPassword"></span>
                                                 <?php
                                                 if( isset($passwordError)){
@@ -352,6 +365,10 @@ if (isset($_POST['addCustomerr']) ) {
         </div>
         </div>
         <!-- /.content-wrapper -->
+        <script src="./dist/js/all.js"></script>
+
+</body>
+</html>
         <?php
         include('./shared/footer.php');
         ?>

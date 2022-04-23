@@ -334,6 +334,7 @@ $(document).ready( function(){
 
         var rewardLimit = $("#updateRewardLimit").val();
         var updateGift = $("#updateGift").val();
+        var updatePoint = $("#updatePoint").val();
        
 
         var valid = true;
@@ -349,6 +350,12 @@ $(document).ready( function(){
             $("#errorUpdateRewardLimit").html("Veuillez insérer un cadeau");
         } else {
             $("#errorUpdateRewardLimit").html();
+        }   
+        if( updatePoint == ""){
+            valid = false;
+            $("#errorUpdatePoint").html("Veuillez insérer l'équivalent de 1 point en Dhs");
+        } else {
+            $("#errorUpdatePoint").html();
         }      
 
     });
@@ -411,6 +418,17 @@ $(document).ready( function(){
     }
 
  });
+
+ //show hide password
+  
+    $('#eye').click(function () {
+        $('#password').attr('type', $('#password').is(':password') ? 'text' : 'password');
+        if ($('#password').attr('type') === 'password') {
+            $('#eye').removeClass('fa-eye').addClass('fa-eye-slash');
+        } else {
+            $('#eye').removeClass('fa-eye-slash').addClass('fa-eye');
+        }
+    });
 
 
 

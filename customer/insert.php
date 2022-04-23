@@ -25,8 +25,9 @@ if(isset($_POST['text'])){
     $text = $_POST['text'];
     $data = explode(";",$text);
     $id = $data[0];
-    $price = $data[1];
-    $datePurchase = $data[2];
+    $idClient = $data[1];
+    $price = $data[2];
+    $datePurchase = $data[3];
 
     $message = "Bonjour Votre ticket est scanner Merci pour votre visite";
 
@@ -34,8 +35,9 @@ if(isset($_POST['text'])){
     $phoneQuery = mysqli_query($connection, $selectPhone) or die("Il y a une erreur" .mysqli_error($connection));
     $row1 = mysqli_fetch_array($phoneQuery);
     $phonenumber = $row1['phonenumber'];
+    $idC = $row1['id'];
 
-    $selectCode = "SELECT * from scan where id = '$id'";
+    $selectCode = "SELECT * from scan where id = '$id' and idClient = '$idC'";
     $codeQuery = mysqli_query($connection, $selectCode) or die("Il y a une erreur".mysqli_error($connection));
     
 
@@ -51,7 +53,7 @@ if(isset($_POST['text'])){
 
     if(!$error){
 
-        $sql = "insert into scan(id, price, datePurchase) values('$id', '$price', '$datePurchase' )";
+        $sql = "insert into scan(id, idClient, price, datePurchase) values('$id', '$idC', '$price', '$datePurchase' )";
         $sql1 = "insert into points(phonenumber, casheerId, points, totalPurchase, referenceNumber, dateTime) values('$phonenumber', '$cashierId', '$points', '$price', '$reference', '$datePurchase' )";
         
         $result = mysqli_query($connection, $sql ) or die("L'insertion des données a échouée".mysqli_error($connection));

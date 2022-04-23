@@ -1,0 +1,21 @@
+form i {
+    margin-left: -20px;
+    cursor: pointer;
+    position: relative;
+    left: -8px;
+    top: 9px;
+    bottom:15px;
+    z-index: 10;
+    
+}
+
+form ii {    
+    margin-left: -16px;
+    cursor: pointer;
+    position: relative;
+    left: 472px;
+    top: -32px;
+    bottom:10px;
+    z-index: 10;
+    
+}

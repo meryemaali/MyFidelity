@@ -14,7 +14,8 @@
 #errorIdNumber,
 #errorUpdateGift,
 #errorCadeau,
-#errorActif {
+#errorActif,
+#errorUpdatePoint {
     color: #dc3545;
     text-transform: uppercase !important;
     font-weight: bold !important;

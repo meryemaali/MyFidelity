@@ -157,6 +157,20 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                            <a href="./rewardLimit.php"
+                                class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Modifier un palier fidélité</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./giftHistory.php"
+                                class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Historique cadeau</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="./cashierDetails.php"
                                 class="nav-link">
@@ -164,13 +178,7 @@
                                 <p>Mes détails </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="./rewardLimit.php"
-                                class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Modifier un palier fidélité</p>
-                            </a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a href="./updatePassword.php"
                                 class="nav-link">

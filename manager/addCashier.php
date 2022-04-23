@@ -115,6 +115,30 @@ if (isset($_POST['addCashier']) ) {
 
 
 ?>
+<!doctype html>
+<html lang="en">
+<head>
+    <style>
+form ii {    
+    margin-left: 500px;
+    cursor: pointer;
+    position: relative;
+    left: 472px;
+    top: -32px;
+    bottom:10px;
+    z-index: 10;
+    
+}
+</style>
+
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+</head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -320,6 +344,7 @@ if (isset($_POST['addCashier']) ) {
                                                 class="form-control" name="password"
                                                 id="password"
                                                 placeholder="Mot de passe">
+                                                <ii id="eye" class="far fa-eye-slash"></ii>
 												<span id="errorPassword"></span>
                                                 <?php
                                                 if( isset($passwordError)){
@@ -351,6 +376,10 @@ if (isset($_POST['addCashier']) ) {
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
+        <script src="./dist/js/all.js"></script>
+
+</body>
+</html>
         <?php
         include('./includes/footer.php');
         ?>

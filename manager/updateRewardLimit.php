@@ -9,6 +9,7 @@ $error = false;
 if(isset($_POST['updateLimit'])){
     $rewardLimit = cleanForm($_POST['updateRewardLimit']);
     $updateGift = cleanForm($_POST['updateGift']);
+    $updatePoint = cleanForm($_POST['updatePoint']);
 
 
     if( empty($rewardLimit) ){
@@ -18,19 +19,28 @@ if(isset($_POST['updateLimit'])){
     } else if( !preg_match("/^[0-9]*$/", $rewardLimit)){
         $error = true;
         $rewardLimitError = "<div class='alert alert-danger'>
-        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne doit contenir que des lettres.</div>";
+        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne doit contenir que des chiffres.</div>";
     }
 
     if( empty($updateGift) ){
         $error = true;
         $giftError = "<div class='alert alert-danger'>
         <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne peut pas être vide.</div>";
-} 
+}
+if( empty($updatePoint) ){
+    $error = true;
+    $pointError = "<div class='alert alert-danger'>
+    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne peut pas être vide.</div>";
+}  else if( !preg_match("/^[0-9]*$/", $updatePoint)){
+    $error = true;
+    $pointError = "<div class='alert alert-danger'>
+    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne doit contenir que des chiffres.</div>";
+}
 
     
     if(!$error){
 
-        $sql = "UPDATE rewardlimit SET reward_limit = '$rewardLimit', gift = '$updateGift', dateUpdated=Now() WHERE id='$id' "; 
+        $sql = "UPDATE rewardlimit SET reward_limit = '$rewardLimit', gift = '$updateGift', point = '$updatePoint', dateUpdated=Now() WHERE id='$id' "; 
         
         $result = mysqli_query($connection, $sql ) or die("Il y a une erreur".mysqli_error($connection));
        
@@ -93,9 +103,25 @@ if(isset($_POST['updateLimit'])){
 
                                 $reward_limit = $row['reward_limit'];
                                 $gift = $row['gift'];
+                                $point = $row['point'];
                                 ?>
                                     <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>"
                                     method = "POST">
+                                    <div class="form-group">
+                                            <label for="updateReward">L'équivalent de 1 point en dhs</label>
+                                            <input type="text" 
+                                            class="form-control" 
+                                            value="<?php echo $point; ?>"
+                                            name="updatePoint"
+                                            id="updatePoint" 
+                                            placeholder="1 point en dhs">
+                                            <?php
+                                            if(isset($pointError)){
+                                                echo $pointError;
+                                            }
+                                            ?>
+                                            <span id="errorUpdatepoint"></span>
+                                        </div>
                                         <div class="form-group">
                                             <label for="updateReward">Modifier le palier</label>
                                             <input type="text" 

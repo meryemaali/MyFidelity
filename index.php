@@ -74,7 +74,17 @@ if( isset($_POST['login'])){
     }
 }
 ?>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./dist/css/style.css"/>
 
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+</head>
 <body class="hold-transition login-page">
     <div class="login-box">
         <!-- /.login-logo -->
@@ -118,6 +128,11 @@ if( isset($_POST['login'])){
                             id="password"
                             class="form-control"
                             placeholder="Mot de passe">
+                       
+                            
+                                <i id="eye" class="far fa-eye-slash"></i>
+                           
+                          
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -154,6 +169,8 @@ if( isset($_POST['login'])){
     <!-- /.login-box -->
 
     <script src="./dist/js/all.js"></script>
+                    </body>
+                    </html>
 
     <?php
     include('./shared/footer.php');

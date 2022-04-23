@@ -77,7 +77,7 @@ include('./includes/header.php');
                                 <div class="inner">
                                 <?php
 
-                                $selectCustomers = "SELECT COUNT(*) as SUM FROM customer";
+                                $selectCustomers = "SELECT COUNT(*) as SUM FROM cashier where cashierRole = 'client' and actif = '1'";
                                 $queryCustomers = mysqli_query($connection, $selectCustomers) or die("Il y a une erreur" .mysqli_error($connection));
                                 $row = mysqli_fetch_assoc($queryCustomers);
                                 echo '<h3>' .$row['SUM'].'</h3>';
@@ -124,7 +124,7 @@ include('./includes/header.php');
                                         <tbody>
                                         <?php
 
-                                        $selectRewardPoints = "SELECT * FROM points ORDER BY dateTime desc LIMIT 10";
+                                        $selectRewardPoints = "SELECT * FROM points where totalPurchase > '0' ORDER BY dateTime desc LIMIT 10";
                                         $queryRewardPoints = mysqli_query($connection, $selectRewardPoints) or die("Il y a une erreur" .mysqli_error($connection));
                                         while($row = mysqli_fetch_array($queryRewardPoints)){
 

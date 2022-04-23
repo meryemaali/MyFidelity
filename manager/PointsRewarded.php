@@ -58,7 +58,7 @@ include('./includes/header.php');
 
                                         <?php
 
-                                        $selectPoints = "SELECT * FROM points ORDER BY dateTime desc";
+                                        $selectPoints = "SELECT * FROM points where totalPurchase > '0' ORDER BY dateTime desc";
                                         $queryPoints = mysqli_query($connection, $selectPoints) or die("Il y a une erreur" .mysqli_error($connection));
                                         while($row = mysqli_fetch_array($queryPoints)){
 

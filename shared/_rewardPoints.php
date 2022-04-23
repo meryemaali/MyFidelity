@@ -10,6 +10,7 @@ $query = mysqli_query($connection, $sql) or die("Il y a une erreur" .mysqli_erro
 $row = mysqli_fetch_array($query);
 
 $rewardLimit = $row['reward_limit'];
+$point = $row['point'];
 
 function referenceNumber($length){
     $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -51,15 +52,16 @@ if(isset($_POST['rewardPoints'])){
         $error = true;
         $errorTotalPurchase = "<div class='alert alert-danger'>
         <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Ce champ ne doit contenir que des chiffres.</div>";
-    } else if($totalPurchase < $rewardLimit){
-        $error = true;
-        $errorTotalPurchase = "<div class='alert alert-danger'>
-        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Total achat ne doit pas être moins de la récompense.</div>";
+     } 
+     // else if($totalPurchase < $rewardLimit){
+    //     $error = true;
+    //     $errorTotalPurchase = "<div class='alert alert-danger'>
+    //     <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Total achat ne doit pas être moins de la récompense.</div>";
    
-    }
+    // }
 
     $reference = referenceNumber(12);
-    $points = intval(floatval($totalPurchase) / floatval($rewardLimit));
+    $points = intval(floatval($totalPurchase) / floatval($point));
 
     if(!$error){
         $sql = "insert into points(phonenumber, casheerId, points, totalPurchase, referenceNumber, dateTime) values('$phonenumber', '$cashierId', '$points', '$totalPurchase', '$reference', Now() )";
