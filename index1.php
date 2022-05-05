@@ -80,7 +80,6 @@ if( isset($_POST['login'])){
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="./dist/css/style.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">   
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -100,13 +99,63 @@ if( isset($_POST['login'])){
                 <p class="h1"><b>MyFidelity </b>App</p>
             </div>
             <div class="card-body">
-            <div class="text-center">Bienvenu ! Scannez votre badge ici
-            <div style="text-align: center;">
-            <button type="button" class="btn btn-light"> <a href="./customer/scanBadge.php"><span class='bi bi-qr-code-scan' style='color: blue; font-size: 10em'></span></a></button>
-          
-                        <div class="text-center">Connectez-vous ici ? <a href="index1.php">Connexion</a></div>
-                        
+
+                <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
+                    method="post">
+                    <div class="input-group mb-3">
+                        <input type="email"
+                            name="email" 
+                            id="email"
+                            class="form-control"
+                            placeholder="Email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
                         </div>
+                    </div>
+                    <span id="errorEmail"></span>
+                    <?php
+                    if( isset($emailError)){
+                        echo $emailError;
+                    }
+                    ?>
+                    <div class="input-group mb-3">
+                        
+                    
+                        <input type="password"
+                            name="password" 
+                            id="password"
+                            class="form-control"
+                            placeholder="Mot de passe">
+                       
+                            
+                                <i id="eye" class="far fa-eye-slash"></i>
+                           
+                          
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span id="errorPassword"></span>
+                    <?php
+                        if( isset($passwordError)){
+                           echo $passwordError;
+                        }
+                        ?> 
+                    <div class="row">
+                        <!-- /.col -->
+                        <div class="col-12">
+                            <button type="submit" 
+                            name="login" 
+                            id="login"
+                            class="btn btn-primary btn-block">Connexion
+                        </button>
+                        <div class="text-center">Vous n'avez pas un compte ? <a href="register.php">Cliquez-ici</a></div>
+                        <div class="text-center">Vous êtes client ? <a href="./customer/scanBadge.php">Scanner votre badge ici</a></div>
+                        <div class="text-center">Page d'accueil <a href="index.php">Revenir</a></div>
                         </div>
                         <!-- /.col -->
                     </div>
