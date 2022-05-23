@@ -51,8 +51,6 @@ if(isset($_POST['validateAccount'])){
 
         $mail->isHTML(true);
        
-
-       
         $mail->Subject = 'Validation de compte';
         $mail->Body = 'Merci pour votre inscription !
         Votre compte est créé, vous pouvez vous connectez avec votre email et mot de passe.';

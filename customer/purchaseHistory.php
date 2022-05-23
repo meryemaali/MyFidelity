@@ -72,18 +72,22 @@ include('./includes/header.php');
                                             <?php
                                             $id = $_SESSION['cashierId'];
                                             $result = "SELECT * from cashier WHERE cashierRole = 'client' AND id = '$id'";
-                                            $query = mysqli_query($connection, $result) or die("Il ya une erreure" .mysqli_error($connection));
+                                            $query = mysqli_query($connection, $result) or die("Il ya une erreur" .mysqli_error($connection));
                                             $row = mysqli_fetch_array($query);
             
                                             $phonenumber = $row['phonenumber'];
                                             
                                             $selectCustomers = "SELECT * from points WHERE phonenumber = '$phonenumber' and totalPurchase != '0' ORDER BY dateTime desc";
-                                            $queryCustomers = mysqli_query($connection, $selectCustomers) or die("Il y a une erreure" .mysqli_error($connection));
+                                            $queryCustomers = mysqli_query($connection, $selectCustomers) or die("Il y a une erreur" .mysqli_error($connection));
                                             
                                             while($row = mysqli_fetch_array($queryCustomers)){
+                                                $totalPurchase = $row['totalPurchase'];
                                             ?>
                                             <tr>
-                                                <td><?php echo $row['totalPurchase'] ?></td>
+                                                <td><?php 
+                                                if($totalPurchase < 0){
+                                                echo '0';}
+                                                else echo $row['totalPurchase'] ?></td>
                                                 <td><?php echo $row['points'] ?></td>
                                                 <td><?php echo $row['dateTime'] ?></td>
                                                 

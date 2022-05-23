@@ -1,6 +1,7 @@
 <?php
 include('./shared/header.php');
 include('./shared/sanitize.php');
+//echo 'Version PHP courante : ' . phpversion();
 
 if( isset($_SESSION['cashierId']) != "" && isset($_SESSION['cashierRole']) != ""){
     if($_SESSION['cashierRole'] == 'administrateur'){
