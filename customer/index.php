@@ -31,7 +31,7 @@ $phonenumber = $row1['phonenumber'];
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
-                
+                <?php include('notify.php'); ?>
                             <h1 class="m-4">    Dashboard</h1>
                              <!-- Main content -->
             <section class="content">
