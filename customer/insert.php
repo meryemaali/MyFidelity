@@ -1,5 +1,5 @@
 <?php
-include('../shared/config.php');
+include('../shared/header.php');
 
 
 $cashierId = $_SESSION['cashierId'];
