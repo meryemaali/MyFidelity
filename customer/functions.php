@@ -1,8 +1,8 @@
 <?php
 
-    define('DBINFO', 'mysql:host=localhost;dbname=loyalty');
-    define('DBUSER','root');
-    define('DBPASS','');
+    define('DBINFO', 'mysql:host=us-cdbr-east-05.cleardb.net;dbname=heroku_b62de6d95fae9c3');
+    define('DBUSER','bfa812fd18fa85');
+    define('DBPASS','cc5d51e0');
 
     function fetchAll($query){
         $con = new PDO(DBINFO, DBUSER, DBPASS);
