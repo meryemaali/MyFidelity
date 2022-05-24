@@ -119,6 +119,4 @@ $phonenumber = $row1['phonenumber'];
         </div>
         <!-- /.content-wrapper -->
 
-        <?php
-        include('./includes/footer.php');
-        ?>
+        
