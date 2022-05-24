@@ -20,7 +20,7 @@ $error = false;
 
 if(isset($_POST['text'])){
 
-    $voice = new com("SAPI.SpVoice");
+    //$voice = new com("SAPI.SpVoice");
     
     $text = $_POST['text'];
     $data = explode(";",$text);
@@ -29,7 +29,7 @@ if(isset($_POST['text'])){
     $price = $data[2];
     $datePurchase = $data[3];
 
-    $message = "Bonjour Votre ticket est scanner Merci pour votre visite";
+    //$message = "Bonjour Votre ticket est scanner Merci pour votre visite";
 
     $selectPhone = "SELECT * FROM cashier WHERE id='$cashierId'";
     $phoneQuery = mysqli_query($connection, $selectPhone) or die("Il y a une erreur" .mysqli_error($connection));
@@ -60,7 +60,7 @@ if(isset($_POST['text'])){
         $result1 = mysqli_query($connection, $sql1 ) or die("L'insertion des données a échouée".mysqli_error($connection));
 
         if ($result == 1 && $result1 == 1) {
-            $voice->speak($message);
+           // $voice->speak($message);
             header('Location: index.php?msg');
                 }
     }
