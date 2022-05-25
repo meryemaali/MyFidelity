@@ -3,7 +3,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 include('./includes/header.php');
 include('../shared/sanitize.php');
 
-$id = $_GET['id'];
+$id = $_SESSION['cashierId'];
 
 $result1 = "SELECT * from cashier WHERE id = '$id'";
 $query1 = mysqli_query($connection, $result1) or die("Il ya une erreur" .mysqli_error($connection));
