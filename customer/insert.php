@@ -49,7 +49,7 @@ if(isset($_POST['text'])){
     }
 
     $reference = referenceNumber(12);
-    $points = intval(floatval($price) / floatval($point));
+    $points = intval(floatval($price) / floatval($rewardLimit));
 
     if(!$error){
 
