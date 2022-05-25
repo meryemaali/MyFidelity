@@ -1,5 +1,5 @@
 <?php
-include('../shared/header.php');
+include('../shared/config.php');
 
 
 $cashierId = $_SESSION['cashierId'];
@@ -9,7 +9,7 @@ $sql = "SELECT * FROM rewardlimit";
 $query = mysqli_query($connection, $sql) or die("Il y a une erreur" .mysqli_error($connection));
 $row = mysqli_fetch_array($query);
 
-$rewardLimit = $row['reward_limit'];
+$reward = $row['point'];
 
 function referenceNumber($length){
     $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -33,9 +33,9 @@ if(isset($_POST['text'])){
 
     $selectPhone = "SELECT * FROM cashier WHERE id='$cashierId'";
     $phoneQuery = mysqli_query($connection, $selectPhone) or die("Il y a une erreur" .mysqli_error($connection));
-    $row1 = mysqli_fetch_array($phoneQuery);
-    $phonenumber = $row1['phonenumber'];
-    $idC = $row1['id'];
+    $rowP = mysqli_fetch_array($phoneQuery);
+    $phonenumber = $rowP['phonenumber'];
+    $idC = $rowP['id'];
 
     $selectCode = "SELECT * from scan where id = '$id' and idClient = '$idC'";
     $codeQuery = mysqli_query($connection, $selectCode) or die("Il y a une erreur".mysqli_error($connection));
@@ -49,7 +49,7 @@ if(isset($_POST['text'])){
     }
 
     $reference = referenceNumber(12);
-    $points = intval(floatval($price) / floatval($rewardLimit));
+    $points = intval(floatval($price) / floatval($reward));
 
     if(!$error){
 
