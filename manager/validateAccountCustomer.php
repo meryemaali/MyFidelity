@@ -32,7 +32,7 @@ if(isset($_POST['validateAccount'])){
         if($actif == '1'){
         $sql = "UPDATE cashier SET actif='1' WHERE id='$id'";
         $result = mysqli_query($connection, $sql) or die("Il ya une erreur" .mysqli_error($connection));
-        if($result == 1){
+        
 
         // require_once "PHPMailer\PHPMailer.php";
         // require_once "PHPMailer\SMTP.php";
@@ -63,7 +63,7 @@ if(isset($_POST['validateAccount'])){
         //  } else {
         //     echo 'Le message a bien été envoyé !';
         //  }
-        header('Location: validateCustomers.php?psdmg');}
+        header('Location: validateCustomers.php?psdmg');
         
         
     }else if ($actif == '2'){
