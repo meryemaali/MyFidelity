@@ -8,20 +8,8 @@ $cashierId = $_SESSION['cashierId'];
 $sql = "SELECT * FROM rewardlimit";
 $query = mysqli_query($connection, $sql) or die("Il y a une erreur" .mysqli_error($connection));
 $row = mysqli_fetch_array($query);
+
 $reward = $row['point'];
-
-$selectPhone = "SELECT * FROM cashier WHERE id = '$cashierId'";
-    $phoneQuery = mysqli_query($connection, $selectPhone) or die("Il y a une erreur" .mysqli_error($connection));
-    $rowP = mysqli_fetch_array($phoneQuery);
-    $phonenumber = $rowP['phonenumber'];
-    $idC = $rowP['id'];
-
-    $selectCode = "SELECT * from scan where id = '$id' and idClient = '$idC'";
-    $codeQuery = mysqli_query($connection, $selectCode) or die("Il y a une erreur".mysqli_error($connection));
-    
-
-    $checkCode = mysqli_num_rows($codeQuery);
-
 
 function referenceNumber($length){
     $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -43,7 +31,18 @@ if(isset($_POST['text'])){
 
     //$message = "Bonjour Votre ticket est scanner Merci pour votre visite";
 
+    $selectPhone = "SELECT * FROM cashier WHERE id='$cashierId'";
+    $phoneQuery = mysqli_query($connection, $selectPhone) or die("Il y a une erreur" .mysqli_error($connection));
+    $rowP = mysqli_fetch_array($phoneQuery);
+    $phonenumber = $rowP['phonenumber'];
+    $idC = $rowP['id'];
+
+    $selectCode = "SELECT * from scan where id = '$id' and idClient = '$idC'";
+    $codeQuery = mysqli_query($connection, $selectCode) or die("Il y a une erreur".mysqli_error($connection));
     
+
+    $checkCode = mysqli_num_rows($codeQuery);
+
     if( $checkCode > 0 ){
         $error = true;
         header('Location: index.php?psdmg');
