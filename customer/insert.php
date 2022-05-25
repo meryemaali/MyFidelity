@@ -9,7 +9,7 @@ $sql = "SELECT * FROM rewardlimit";
 $query = mysqli_query($connection, $sql) or die("Il y a une erreur" .mysqli_error($connection));
 $row = mysqli_fetch_array($query);
 
-$point = $row['point'];
+$rewardLimit = $row['reward_limit'];
 
 function referenceNumber($length){
     $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -49,7 +49,7 @@ if(isset($_POST['text'])){
     }
 
     $reference = referenceNumber(12);
-    $points = intval(floatval($price) / floatval($point));
+    $points = intval(floatval($price) / floatval($rewardLimit));
 
     if(!$error){
 
