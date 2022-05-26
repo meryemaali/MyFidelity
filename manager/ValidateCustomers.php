@@ -1,7 +1,8 @@
 <?php
 include('./includes/header.php');
 ?>
-
+<!doctype html>
+<html lang="en">
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <!-- Main Sidebar Container -->
@@ -124,6 +125,8 @@ include('./includes/header.php');
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
+        </body>
+                    </html>
         <?php
         include('./includes/footer.php');
         ?>

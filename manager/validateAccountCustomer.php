@@ -62,14 +62,14 @@ if(isset($_POST['validateAccount'])){
         //  } else {
         //     echo 'Le message a bien été envoyé !';
         //  }
-        header('Location: index.php');
+        header('Location: validateCustomers.php?psdmg');
         
         
     }else if ($actif == '2'){
         $sql1 = "delete from cashier WHERE id='$id'";
         $result1 = mysqli_query($connection, $sql1) or die("Il ya une erreur" .mysqli_error($connection));
         if($result1 == 1){
-            header('Location: index.php');
+            header('Location: validateCustomers.php?msg');
         }
     }
 
