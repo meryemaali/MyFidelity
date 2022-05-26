@@ -128,7 +128,7 @@ include('./includes/header.php');
         <?php
         include('./includes/footer.php');
         ?>
-<!-- 
+
         <script>
             $(document).ready( function(){
                 $('#customerTable').DataTable({
@@ -140,4 +140,4 @@ include('./includes/header.php');
 
                 })
             });
-        </script> -->
+        </script>

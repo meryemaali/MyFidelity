@@ -8,6 +8,21 @@ include('./includes/header.php');
         <?php include('includes/aside.php'); ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+        <?php
+            if(isset($_GET['psdmg'])){
+                $customerValidateSucess =  "<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Nouveau client validé.</div>";
+                echo $customerValidateSucess;  
+            }
+
+            if(isset($_GET['msg'])){
+                $customerNonValidate =  "<div class='alert alert-success'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Nouveau client supprimé.</div>";
+                echo $customerNonValidate;  
+            }
+
+            
+            ?>
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
