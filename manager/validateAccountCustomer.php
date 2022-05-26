@@ -1,7 +1,5 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
+//use PHPMailer\PHPMailer\PHPMailer;
 include('./includes/header.php');
 include('../shared/sanitize.php');
 
@@ -35,38 +33,35 @@ if(isset($_POST['validateAccount'])){
         $sql = "UPDATE cashier SET actif='1' WHERE id='$id'";
         $result = mysqli_query($connection, $sql) or die("Il ya une erreur" .mysqli_error($connection));
         
-        //Load Composer's autoloader
-        require 'vendor/autoload.php';
+        // require_once "PHPMailer\PHPMailer.php";
+        // require_once "PHPMailer\SMTP.php";
+        // require_once "PHPMailer\Exception.php";
 
-        //Create an instance; passing `true` enables exceptions
-        $mail = new PHPMailer(true);
-        try {
-            //Server settings
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.example.com';                     //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'myturn.projet@gmail.com';                     //SMTP username
-            $mail->Password   = 'myturn1234';                               //SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        
+        // $mail = new PHPMailer();
+        // $mail->isSMTP(); // Paramétrer le Mailer pour utiliser SMTP 
+        // $mail->Host = 'smtp.gmail.com'; // Spécifier le serveur SMTP
+        // $mail->SMTPAuth = true; // Activer authentication SMTP
+        // $mail->Username = 'myturn.projet@gmail.com'; // Votre adresse email d'envoi
+        // $mail->Password = 'myturn1234'; // Le mot de passe de cette adresse email
+        // $mail->SMTPSecure = "ssl"; // Accepter SSL
+        // $mail->Port = 465;
 
-        $mail->setFrom('myturn.projet@gmail.com', 'Mailer'); // Personnaliser l'envoyeur
-        $mail->addAddress($email, 'User'); // Ajouter le destinataire
+        // $mail->setFrom('myturn.projet@gmail.com', 'Mailer'); // Personnaliser l'envoyeur
+        // $mail->addAddress($email, 'User'); // Ajouter le destinataire
 
-        $mail->isHTML(true);
+        // $mail->isHTML(true);
        
-        $mail->Subject = 'Validation de compte';
-        $mail->Body = 'Merci pour votre inscription !
-        Votre compte est créé, vous pouvez vous connectez avec votre email et mot de passe.';
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        // $mail->Subject = 'Validation de compte';
+        // $mail->Body = 'Merci pour votre inscription !
+        // Votre compte est créé, vous pouvez vous connectez avec votre email et mot de passe.';
+        // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         
-        $mail->send();
-    echo 'Message has been sent';
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-}
+        // if(!$mail->send()) {
+        //     echo 'Erreur, message non envoyé.';
+        //     echo 'Mailer Error: ' . $mail->ErrorInfo;
+        //  } else {
+        //     echo 'Le message a bien été envoyé !';
+        //  }
         header('Location: index.php?psdmg');
         
         
