@@ -54,13 +54,13 @@ $phonenumber = $row1['phonenumber'];
                 $points = $row['total'];            
 
                 if($points >= $rewardLimit){
-                  $sqlUpdate = "insert into notifications(id, name, type, message, status, cadeau, date) values('$id', '$lastname', 'palier', 'Félicatations! Vous avez un cadeau. Rendez-vous dans votre magasin.', 'unread', 'non', Now() )";
+                  $sqlUpdate = "insert into notifications(id, name, type, message, status, cadeau, date) values('$id', '$lastname', 'palier', 'Felicitations! Vous avez un cadeau. Rendez-vous dans votre magasin.', 'unread', 'non', Now() )";
                   $updateQuery = mysqli_query($connection, $sqlUpdate) or die("Il y a une erreur" .mysqli_error($connection));
                   $sqll = "insert into points(phonenumber, casheerId, points, totalPurchase, referenceNumber, dateTime) values('$phonenumber', '0', '-$rewardLimit', '0', '0', Now()) ";
                   $result = mysqli_query($connection, $sqll) or die("Il ya une erreure" .mysqli_error($connection));
                   if($updateQuery == 1 && $result == 1){
                     $updateSucess =  "<div class='alert alert-success'>
-            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Réussi</div>"; 
+            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Reussi</div>"; 
           
         }
                 }

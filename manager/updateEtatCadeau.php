@@ -27,12 +27,12 @@ if(isset($_POST['updateCadeau'])){
        
         $sql = "UPDATE points SET totalPurchase = '-1' WHERE phonenumber = '$phonenumber' and totalPurchase = '0'";
         $result = mysqli_query($connection, $sql) or die("Il ya une erreur" .mysqli_error($connection));
-        $sqll = "insert into cadeau(phonenumber, cadeau, etat, date) values('$phonenumber', '$cadeau', 'récupéré', Now() )";
+        $sqll = "insert into cadeau(phonenumber, cadeau, etat, date) values('$phonenumber', '$cadeau', 'pris', Now() )";
         $resultt = mysqli_query($connection, $sqll) or die("Il ya une erreur" .mysqli_error($connection));
         if($result == 1 && $resultt == 1){
             header('Location: customers.php?msgg');
         } }else if(!$error && $totalPurchase == 'NON'){
-            $sqlN = "insert into cadeau(phonenumber, cadeau, etat, date) values('$phonenumber', '$cadeau', 'non récupéré', '-' )";
+            $sqlN = "insert into cadeau(phonenumber, cadeau, etat, date) values('$phonenumber', '$cadeau', 'non pris', '-' )";
             $resultN = mysqli_query($connection, $sqlN) or die("Il ya une erreur" .mysqli_error($connection));
             header('Location: customers.php?msggg');
          } else {
