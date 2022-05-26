@@ -1,7 +1,8 @@
 <?php
 include('./includes/header.php');
 ?>
-
+<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <!-- Main Sidebar Container -->
@@ -18,7 +19,7 @@ include('./includes/header.php');
             }
 
             if(isset($_GET['msg'])){
-                $customerNonValidate =  "<div class='alert alert-success'>
+                $customerNonValidate =  "<div class='alert alert-danger'>
                 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Nouveau client supprimé.</div>";
                 echo $customerNonValidate;  
             }
@@ -123,8 +124,10 @@ include('./includes/header.php');
             </section>
             <!-- /.content -->
         </div>
+        </div>
         <!-- /.content-wrapper -->
         </body>
+        </html>
         <?php
         include('./includes/footer.php');
         ?>
