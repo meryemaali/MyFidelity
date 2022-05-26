@@ -1,8 +1,7 @@
 <?php
 include('./includes/header.php');
 ?>
-<!DOCTYPE html>
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <!-- Main Sidebar Container -->
@@ -32,28 +31,16 @@ include('./includes/header.php');
                         <div class="col-sm-6">
                             <h1 class="text-uppercase m-2">Les nouveaux clients</h1>
                         </div>
-                        <!-- /.col -->
-                        <!-- /.col -->
                     </div>
-                    <!-- /.row -->
                 </div>
                 <!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
 
-            <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <!-- Small boxes (Stat box) -->
-
-                    <!-- Main row -->
-
-
                     <div class="row">
-
-                        <!-- Left col -->
                         <section class="col-lg-12 connectedSortable">
-                            <!-- Custom tabs (Charts with tabs)-->
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">Les clients inscrits</h3>
@@ -110,15 +97,7 @@ include('./includes/header.php');
                             </div>
                             <!-- /.card -->
                         </section>
-                        <!-- /.Left col -->
-                        <!-- right col (We are only adding the ID to make the widgets sortable)-->
-
-
-
                     </div>
-                    <!-- /.row (main row) -->
-
-
                 </div>
                 <!-- /.container-fluid -->
             </section>
@@ -127,7 +106,6 @@ include('./includes/header.php');
         </div>
         <!-- /.content-wrapper -->
         </body>
-        </html>
         <?php
         include('./includes/footer.php');
         ?>
