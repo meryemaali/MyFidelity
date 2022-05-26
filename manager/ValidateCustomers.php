@@ -1,12 +1,7 @@
 <?php
 include('./includes/header.php');
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset=UTF-8>
-    
-  </head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <!-- Main Sidebar Container -->
@@ -130,11 +125,10 @@ include('./includes/header.php');
         </div>
         <!-- /.content-wrapper -->
         </body>
-                    </html>
         <?php
         include('./includes/footer.php');
         ?>
-
+<!-- 
         <script>
             $(document).ready( function(){
                 $('#customerTable').DataTable({
@@ -146,4 +140,4 @@ include('./includes/header.php');
 
                 })
             });
-        </script>
+        </script> -->
