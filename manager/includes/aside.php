@@ -103,7 +103,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./validateCustomers.php"
+                            <a href="./ValidateCustomers.php"
                                 class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Valider les nouveaux clients</p>
