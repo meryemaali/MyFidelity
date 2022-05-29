@@ -91,11 +91,7 @@ try {
     $response = $sendgrid->send($email);
     printf("Response status: %d\n\n", $response->statusCode());
 
-    $headers = array_filter($response->headers());
-    echo "Response Headers\n\n";
-    foreach ($headers as $header) {
-        echo '- ' . $header . "\n";
-    }
+    print_r($response->headers());
 } catch (Exception $e) {
     echo 'Caught exception: '. $e->getMessage() ."\n";
 }
