@@ -63,6 +63,18 @@ if(isset($_POST['updateCustomerDetails'])){
         <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Email non valide.</div>";
     }
 
+    $selectEmail = "SELECT * from cashier where email = '$email'";
+    $emailQuery = mysqli_query($connection, $selectEmail) or die("Il y a une erreur".mysqli_error($connection));
+
+    $checkEmail = mysqli_num_rows($emailQuery);
+
+    if( $checkEmail > 0 ){
+        $error = true;
+        $emailError =  "<div class='alert alert-danger'>
+        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times</a>Cette adresse email existe déjà! Veuillez saisir une autre adresse.</div>";
+    
+    }
+
 	if( empty($adresse) ){
 			$error = true;
 			$adresseError = "<div class='alert alert-danger'>
