@@ -80,7 +80,7 @@ $email->setFrom(
 $email->setSubject('Validation de compte');
 // Replace the email address and name with your recipient
 $email->addTo(
-    $mail
+    'myturn.projet@gmail.com'
 );
 $email->addContent(
     'Merci pour votre inscription !
