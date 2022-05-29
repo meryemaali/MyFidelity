@@ -47,8 +47,8 @@ if(isset($_POST['validateAccount'])){
         // $mail->isSMTP(); // Paramétrer le Mailer pour utiliser SMTP 
         // $mail->Host = 'smtp.gmail.com'; // Spécifier le serveur SMTP
         // $mail->SMTPAuth = true; // Activer authentication SMTP
-        // $mail->Username = 'myturn.projet@gmail.com'; // Votre adresse email d'envoi
-        // $mail->Password = 'myturn1234'; // Le mot de passe de cette adresse email
+        // $mail->Username = '************************'; // Votre adresse email d'envoi
+        // $mail->Password = '******'; // Le mot de passe de cette adresse email
         // $mail->SMTPSecure = "ssl"; // Accepter SSL
         // $mail->Port = 465;
 
