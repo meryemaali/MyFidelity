@@ -1,5 +1,11 @@
 <?php
 //use PHPMailer\PHPMailer\PHPMailer;
+
+declare(strict_types=1);
+
+require '../vendor/autoload.php';
+
+use \SendGrid\Mail\Mail;
 include('./includes/header.php');
 include('../shared/sanitize.php');
 
@@ -8,7 +14,7 @@ $id = $_GET['id'];
 $result1 = "SELECT * from cashier WHERE id = '$id'";
 $query1 = mysqli_query($connection, $result1) or die("Il ya une erreur" .mysqli_error($connection));
 $row1 = mysqli_fetch_array($query1);
-$email = $row1['email'];
+$mail = $row1['email'];
 
 $error = false;
 
@@ -62,6 +68,38 @@ if(isset($_POST['validateAccount'])){
         //  } else {
         //     echo 'Le message a bien été envoyé !';
         //  }
+
+     
+
+
+$email = new Mail();
+// Replace the email address and name with your verified sender
+$email->setFrom(
+    'myturn.projet@gmail.com'
+);
+$email->setSubject('Validation de compte');
+// Replace the email address and name with your recipient
+$email->addTo(
+    $mail
+);
+$email->addContent(
+    'Merci pour votre inscription !
+     Votre compte est créé, vous pouvez vous connectez avec votre email et mot de passe.'
+);
+$sendgrid = new \SendGrid(getenv('SG.msmeTZTJS9GJjaGGJqfmJw.6gyODDZZZXY-b2_nrJ2Lc6msE-EkD_vIhIJFFGh-hR0'));
+try {
+    $response = $sendgrid->send($email);
+    printf("Response status: %d\n\n", $response->statusCode());
+
+    $headers = array_filter($response->headers());
+    echo "Response Headers\n\n";
+    foreach ($headers as $header) {
+        echo '- ' . $header . "\n";
+    }
+} catch (Exception $e) {
+    echo 'Caught exception: '. $e->getMessage() ."\n";
+}
+
         header('Location: ValidateCustomers.php?psdmg');
         
         
